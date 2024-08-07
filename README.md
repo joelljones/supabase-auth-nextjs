@@ -60,8 +60,8 @@ npm i -D @tailwindcss/forms
 // tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	// ..
-	plugins: [require('@tailwindcss/forms')],
+  // ..
+  plugins: [require('@tailwindcss/forms')],
 }
 ```
 
@@ -150,21 +150,21 @@ export function createClient() {
 import { updateSession } from '@/utils/supabase/middleware'
 
 export async function middleware(request) {
-	// update user's auth session
-	return await updateSession(request)
+  // update user's auth session
+  return await updateSession(request)
 }
 
 export const config = {
-	matcher: [
-		/*
-		 * Match all request paths except for the ones starting with:
-		 * - _next/static (static files)
-		 * - _next/image (image optimization files)
-		 * - favicon.ico (favicon file)
-		 * Feel free to modify this pattern to include more paths.
-		 */
-		'/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
-	],
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * Feel free to modify this pattern to include more paths.
+     */
+    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+  ],
 }
 ```
 
@@ -174,37 +174,37 @@ import { createServerClient } from '@supabase/ssr'
 import { NextResponse } from 'next/server'
 
 export async function updateSession(request) {
-	let supabaseResponse = NextResponse.next({
-		request,
-	})
+  let supabaseResponse = NextResponse.next({
+    request,
+  })
 
-	const supabase = createServerClient(
-		process.env.NEXT_PUBLIC_SUPABASE_URL,
-		process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-		{
-			cookies: {
-				getAll() {
-					return request.cookies.getAll()
-				},
-				setAll(cookiesToSet) {
-					cookiesToSet.forEach(({ name, value, options }) =>
-						request.cookies.set(name, value)
-					)
-					supabaseResponse = NextResponse.next({
-						request,
-					})
-					cookiesToSet.forEach(({ name, value, options }) =>
-						supabaseResponse.cookies.set(name, value, options)
-					)
-				},
-			},
-		}
-	)
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    {
+      cookies: {
+        getAll() {
+          return request.cookies.getAll()
+        },
+        setAll(cookiesToSet) {
+          cookiesToSet.forEach(({ name, value, options }) =>
+            request.cookies.set(name, value)
+          )
+          supabaseResponse = NextResponse.next({
+            request,
+          })
+          cookiesToSet.forEach(({ name, value, options }) =>
+            supabaseResponse.cookies.set(name, value, options)
+          )
+        },
+      },
+    }
+  )
 
-	// refreshing the auth token
-	await supabase.auth.getUser()
+  // refreshing the auth token
+  await supabase.auth.getUser()
 
-	return supabaseResponse
+  return supabaseResponse
 }
 ```
 
@@ -215,16 +215,16 @@ export async function updateSession(request) {
 import { login, signup } from './actions'
 
 export default function LoginPage() {
-	return (
-		<form>
-			<label htmlFor='email'>Email:</label>
-			<input id='email' name='email' type='email' required />
-			<label htmlFor='password'>Password:</label>
-			<input id='password' name='password' type='password' required />
-			<button formAction={login}>Log in</button>
-			<button formAction={signup}>Sign up</button>
-		</form>
-	)
+  return (
+    <form>
+      <label htmlFor='email'>Email:</label>
+      <input id='email' name='email' type='email' required />
+      <label htmlFor='password'>Password:</label>
+      <input id='password' name='password' type='password' required />
+      <button formAction={login}>Log in</button>
+      <button formAction={signup}>Sign up</button>
+    </form>
+  )
 }
 ```
 
@@ -238,48 +238,48 @@ import { redirect } from 'next/navigation'
 import { createClient } from '@/utils/supabase/server'
 
 export async function login(formData) {
-	const supabase = createClient()
+  const supabase = createClient()
 
-	// type-casting here for convenience
-	// in practice, you should validate your inputs
-	const data = {
-		email: formData.get('email'),
-		password: formData.get('password'),
-	}
+  // type-casting here for convenience
+  // in practice, you should validate your inputs
+  const data = {
+    email: formData.get('email'),
+    password: formData.get('password'),
+  }
 
-	const { error } = await supabase.auth.signInWithPassword(data)
+  const { error } = await supabase.auth.signInWithPassword(data)
 
-	if (error) {
-		redirect('/error')
-	}
+  if (error) {
+    redirect('/error')
+  }
 
-	revalidatePath('/', 'layout')
-	redirect('/account')
+  revalidatePath('/', 'layout')
+  redirect('/account')
 }
 
 export async function signup(formData) {
-	const supabase = createClient()
+  const supabase = createClient()
 
-	const data = {
-		email: formData.get('email'),
-		password: formData.get('password'),
-	}
+  const data = {
+    email: formData.get('email'),
+    password: formData.get('password'),
+  }
 
-	const { error } = await supabase.auth.signUp(data)
+  const { error } = await supabase.auth.signUp(data)
 
-	if (error) {
-		redirect('/error')
-	}
+  if (error) {
+    redirect('/error')
+  }
 
-	revalidatePath('/', 'layout')
-	redirect('/account')
+  revalidatePath('/', 'layout')
+  redirect('/account')
 }
 ```
 
 ```jsx
 // app/error/page.jsx
 export default function ErrorPage() {
-	return <p>Sorry, something went wrong</p>
+  return <p>Sorry, something went wrong</p>
 }
 ```
 
@@ -299,33 +299,33 @@ import { createClient } from '@/utils/supabase/server'
 
 // Creating a handler to a GET request to route /auth/confirm
 export async function GET(request) {
-	const { searchParams } = new URL(request.url)
-	const token_hash = searchParams.get('token_hash')
-	const type = searchParams.get('type')
-	const next = '/account'
+  const { searchParams } = new URL(request.url)
+  const token_hash = searchParams.get('token_hash')
+  const type = searchParams.get('type')
+  const next = '/account'
 
-	// Create redirect link without the secret token
-	const redirectTo = request.nextUrl.clone()
-	redirectTo.pathname = next
-	redirectTo.searchParams.delete('token_hash')
-	redirectTo.searchParams.delete('type')
+  // Create redirect link without the secret token
+  const redirectTo = request.nextUrl.clone()
+  redirectTo.pathname = next
+  redirectTo.searchParams.delete('token_hash')
+  redirectTo.searchParams.delete('type')
 
-	if (token_hash && type) {
-		const supabase = createClient()
+  if (token_hash && type) {
+    const supabase = createClient()
 
-		const { error } = await supabase.auth.verifyOtp({
-			type,
-			token_hash,
-		})
-		if (!error) {
-			redirectTo.searchParams.delete('next')
-			return NextResponse.redirect(redirectTo)
-		}
-	}
+    const { error } = await supabase.auth.verifyOtp({
+      type,
+      token_hash,
+    })
+    if (!error) {
+      redirectTo.searchParams.delete('next')
+      return NextResponse.redirect(redirectTo)
+    }
+  }
 
-	// return the user to an error page with some instructions
-	redirectTo.pathname = '/error'
-	return NextResponse.redirect(redirectTo)
+  // return the user to an error page with some instructions
+  redirectTo.pathname = '/error'
+  return NextResponse.redirect(redirectTo)
 }
 ```
 
@@ -338,120 +338,120 @@ import { useCallback, useEffect, useState } from 'react'
 import { createClient } from '@/utils/supabase/client'
 
 export default function AccountForm({ user }) {
-	const supabase = createClient()
-	const [loading, setLoading] = useState(true)
-	const [fullname, setFullname] = useState(null)
-	const [username, setUsername] = useState(null)
-	const [website, setWebsite] = useState(null)
-	const [avatar_url, setAvatarUrl] = useState(null)
+  const supabase = createClient()
+  const [loading, setLoading] = useState(true)
+  const [fullname, setFullname] = useState(null)
+  const [username, setUsername] = useState(null)
+  const [website, setWebsite] = useState(null)
+  const [avatar_url, setAvatarUrl] = useState(null)
 
-	const getProfile = useCallback(async () => {
-		try {
-			setLoading(true)
+  const getProfile = useCallback(async () => {
+    try {
+      setLoading(true)
 
-			const { data, error, status } = await supabase
-				.from('profiles')
-				.select(`full_name, username, website, avatar_url`)
-				.eq('id', user?.id)
-				.single()
+      const { data, error, status } = await supabase
+        .from('profiles')
+        .select(`full_name, username, website, avatar_url`)
+        .eq('id', user?.id)
+        .single()
 
-			if (error && status !== 406) {
-				throw error
-			}
+      if (error && status !== 406) {
+        throw error
+      }
 
-			if (data) {
-				setFullname(data.full_name)
-				setUsername(data.username)
-				setWebsite(data.website)
-				setAvatarUrl(data.avatar_url)
-			}
-		} catch (error) {
-			alert('Error loading user data!')
-		} finally {
-			setLoading(false)
-		}
-	}, [user, supabase])
+      if (data) {
+        setFullname(data.full_name)
+        setUsername(data.username)
+        setWebsite(data.website)
+        setAvatarUrl(data.avatar_url)
+      }
+    } catch (error) {
+      alert('Error loading user data!')
+    } finally {
+      setLoading(false)
+    }
+  }, [user, supabase])
 
-	useEffect(() => {
-		getProfile()
-	}, [user, getProfile])
+  useEffect(() => {
+    getProfile()
+  }, [user, getProfile])
 
-	async function updateProfile({ username, website, avatar_url }) {
-		try {
-			setLoading(true)
+  async function updateProfile({ username, website, avatar_url }) {
+    try {
+      setLoading(true)
 
-			const { error } = await supabase.from('profiles').upsert({
-				id: user?.id,
-				full_name: fullname,
-				username,
-				website,
-				avatar_url,
-				updated_at: new Date().toISOString(),
-			})
-			if (error) throw error
-			alert('Profile updated!')
-		} catch (error) {
-			alert('Error updating the data!')
-		} finally {
-			setLoading(false)
-		}
-	}
+      const { error } = await supabase.from('profiles').upsert({
+        id: user?.id,
+        full_name: fullname,
+        username,
+        website,
+        avatar_url,
+        updated_at: new Date().toISOString(),
+      })
+      if (error) throw error
+      alert('Profile updated!')
+    } catch (error) {
+      alert('Error updating the data!')
+    } finally {
+      setLoading(false)
+    }
+  }
 
-	return (
-		<div className='form-widget'>
-			<div>
-				<label htmlFor='email'>Email</label>
-				<input id='email' type='text' value={user?.email} disabled />
-			</div>
-			<div>
-				<label htmlFor='fullName'>Full Name</label>
-				<input
-					id='fullName'
-					type='text'
-					value={fullname || ''}
-					onChange={(e) => setFullname(e.target.value)}
-				/>
-			</div>
-			<div>
-				<label htmlFor='username'>Username</label>
-				<input
-					id='username'
-					type='text'
-					value={username || ''}
-					onChange={(e) => setUsername(e.target.value)}
-				/>
-			</div>
-			<div>
-				<label htmlFor='website'>Website</label>
-				<input
-					id='website'
-					type='url'
-					value={website || ''}
-					onChange={(e) => setWebsite(e.target.value)}
-				/>
-			</div>
+  return (
+    <div className='form-widget'>
+      <div>
+        <label htmlFor='email'>Email</label>
+        <input id='email' type='text' value={user?.email} disabled />
+      </div>
+      <div>
+        <label htmlFor='fullName'>Full Name</label>
+        <input
+          id='fullName'
+          type='text'
+          value={fullname || ''}
+          onChange={(e) => setFullname(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor='username'>Username</label>
+        <input
+          id='username'
+          type='text'
+          value={username || ''}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor='website'>Website</label>
+        <input
+          id='website'
+          type='url'
+          value={website || ''}
+          onChange={(e) => setWebsite(e.target.value)}
+        />
+      </div>
 
-			<div>
-				<button
-					className='button primary block'
-					onClick={() =>
-						updateProfile({ fullname, username, website, avatar_url })
-					}
-					disabled={loading}
-				>
-					{loading ? 'Loading ...' : 'Update'}
-				</button>
-			</div>
+      <div>
+        <button
+          className='button primary block'
+          onClick={() =>
+            updateProfile({ fullname, username, website, avatar_url })
+          }
+          disabled={loading}
+        >
+          {loading ? 'Loading ...' : 'Update'}
+        </button>
+      </div>
 
-			<div>
-				<form action='/auth/signout' method='post'>
-					<button className='button block' type='submit'>
-						Sign out
-					</button>
-				</form>
-			</div>
-		</div>
-	)
+      <div>
+        <form action='/auth/signout' method='post'>
+          <button className='button block' type='submit'>
+            Sign out
+          </button>
+        </form>
+      </div>
+    </div>
+  )
 }
 ```
 
@@ -461,13 +461,13 @@ import AccountForm from './account-form'
 import { createClient } from '@/utils/supabase/server'
 
 export default async function Account() {
-	const supabase = createClient()
+  const supabase = createClient()
 
-	const {
-		data: { user },
-	} = await supabase.auth.getUser()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
 
-	return <AccountForm user={user} />
+  return <AccountForm user={user} />
 }
 ```
 
@@ -480,21 +480,21 @@ import { revalidatePath } from 'next/cache'
 import { NextResponse } from 'next/server'
 
 export async function POST(req) {
-	const supabase = createClient()
+  const supabase = createClient()
 
-	// Check if a user's logged in
-	const {
-		data: { user },
-	} = await supabase.auth.getUser()
+  // Check if a user's logged in
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
 
-	if (user) {
-		await supabase.auth.signOut()
-	}
+  if (user) {
+    await supabase.auth.signOut()
+  }
 
-	revalidatePath('/', 'layout')
-	return NextResponse.redirect(new URL('/login', req.url), {
-		status: 302,
-	})
+  revalidatePath('/', 'layout')
+  return NextResponse.redirect(new URL('/login', req.url), {
+    status: 302,
+  })
 }
 ```
 
@@ -508,93 +508,93 @@ import { createClient } from '@/utils/supabase/client'
 import Image from 'next/image'
 
 export default function Avatar({ uid, url, size, onUpload }) {
-	const supabase = createClient()
-	const [avatarUrl, setAvatarUrl] = useState(url)
-	const [uploading, setUploading] = useState(false)
+  const supabase = createClient()
+  const [avatarUrl, setAvatarUrl] = useState(url)
+  const [uploading, setUploading] = useState(false)
 
-	useEffect(() => {
-		async function downloadImage(path) {
-			try {
-				const { data, error } = await supabase.storage
-					.from('avatars')
-					.download(path)
-				if (error) {
-					throw error
-				}
+  useEffect(() => {
+    async function downloadImage(path) {
+      try {
+        const { data, error } = await supabase.storage
+          .from('avatars')
+          .download(path)
+        if (error) {
+          throw error
+        }
 
-				const url = URL.createObjectURL(data)
-				setAvatarUrl(url)
-			} catch (error) {
-				console.log('Error downloading image: ', error)
-			}
-		}
+        const url = URL.createObjectURL(data)
+        setAvatarUrl(url)
+      } catch (error) {
+        console.log('Error downloading image: ', error)
+      }
+    }
 
-		if (url) downloadImage(url)
-	}, [url, supabase])
+    if (url) downloadImage(url)
+  }, [url, supabase])
 
-	const uploadAvatar = async (event) => {
-		try {
-			setUploading(true)
+  const uploadAvatar = async (event) => {
+    try {
+      setUploading(true)
 
-			if (!event.target.files || event.target.files.length === 0) {
-				throw new Error('You must select an image to upload.')
-			}
+      if (!event.target.files || event.target.files.length === 0) {
+        throw new Error('You must select an image to upload.')
+      }
 
-			const file = event.target.files[0]
-			const fileExt = file.name.split('.').pop()
-			const filePath = `${uid}-${Math.random()}.${fileExt}`
+      const file = event.target.files[0]
+      const fileExt = file.name.split('.').pop()
+      const filePath = `${uid}-${Math.random()}.${fileExt}`
 
-			const { error: uploadError } = await supabase.storage
-				.from('avatars')
-				.upload(filePath, file)
+      const { error: uploadError } = await supabase.storage
+        .from('avatars')
+        .upload(filePath, file)
 
-			if (uploadError) {
-				throw uploadError
-			}
+      if (uploadError) {
+        throw uploadError
+      }
 
-			onUpload(filePath)
-		} catch (error) {
-			alert('Error uploading avatar!')
-		} finally {
-			setUploading(false)
-		}
-	}
+      onUpload(filePath)
+    } catch (error) {
+      alert('Error uploading avatar!')
+    } finally {
+      setUploading(false)
+    }
+  }
 
-	return (
-		<div>
-			{avatarUrl ? (
-				<Image
-					width={size}
-					height={size}
-					src={avatarUrl}
-					alt='Avatar'
-					className='avatar image'
-					style={{ height: size, width: size }}
-				/>
-			) : (
-				<div
-					className='avatar no-image'
-					style={{ height: size, width: size }}
-				/>
-			)}
-			<div style={{ width: size }}>
-				<label className='button primary block' htmlFor='single'>
-					{uploading ? 'Uploading ...' : 'Upload'}
-				</label>
-				<input
-					style={{
-						visibility: 'hidden',
-						position: 'absolute',
-					}}
-					type='file'
-					id='single'
-					accept='image/*'
-					onChange={uploadAvatar}
-					disabled={uploading}
-				/>
-			</div>
-		</div>
-	)
+  return (
+    <div>
+      {avatarUrl ? (
+        <Image
+          width={size}
+          height={size}
+          src={avatarUrl}
+          alt='Avatar'
+          className='avatar image'
+          style={{ height: size, width: size }}
+        />
+      ) : (
+        <div
+          className='avatar no-image'
+          style={{ height: size, width: size }}
+        />
+      )}
+      <div style={{ width: size }}>
+        <label className='button primary block' htmlFor='single'>
+          {uploading ? 'Uploading ...' : 'Upload'}
+        </label>
+        <input
+          style={{
+            visibility: 'hidden',
+            position: 'absolute',
+          }}
+          type='file'
+          id='single'
+          accept='image/*'
+          onChange={uploadAvatar}
+          disabled={uploading}
+        />
+      </div>
+    </div>
+  )
 }
 ```
 
@@ -608,19 +608,19 @@ import Avatar from './avatar'
 // ...
 
 return (
-	<div className='form-widget'>
-		{/* Add to the body */}
-		<Avatar
-			uid={user?.id}
-			url={avatar_url}
-			size={150}
-			onUpload={(url) => {
-				setAvatarUrl(url)
-				updateProfile({ fullname, username, website, avatar_url: url })
-			}}
-		/>
-		{/* ... */}
-	</div>
+  <div className='form-widget'>
+    {/* Add to the body */}
+    <Avatar
+      uid={user?.id}
+      url={avatar_url}
+      size={150}
+      onUpload={(url) => {
+        setAvatarUrl(url)
+        updateProfile({ fullname, username, website, avatar_url: url })
+      }}
+    />
+    {/* ... */}
+  </div>
 )
 ```
 
