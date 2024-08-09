@@ -1,6 +1,7 @@
 'use client'
 
 import { createClient } from '@/utils/supabase/client'
+import { UserCircleIcon } from '@heroicons/react/24/solid'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
@@ -58,7 +59,7 @@ export default function Avatar({ uid, url, size, onUpload }) {
   }
 
   return (
-    <div>
+    <div className='mt-2 flex items-center gap-x-3'>
       {avatarUrl ? (
         <Image
           width={size}
@@ -69,22 +70,27 @@ export default function Avatar({ uid, url, size, onUpload }) {
           style={{ height: size, width: size }}
         />
       ) : (
-        <div
-          className='avatar no-image border'
-          style={{ height: size, width: size }}
+        <UserCircleIcon
+          aria-hidden='true'
+          className='h-12 w-12 text-gray-300'
         />
       )}
       <div style={{ width: size }}>
-        <label className='button primary block' htmlFor='single'>
-          {uploading ? 'Uploading ...' : 'Upload'}
-        </label>
+        <button
+          type='button'
+          className='rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'
+          onClick={() => document.getElementById('avatar').click()}
+          disabled={uploading}
+        >
+          {uploading ? 'Uploading ...' : 'Change'}
+        </button>
         <input
           style={{
             visibility: 'hidden',
             position: 'absolute',
           }}
           type='file'
-          id='single'
+          id='avatar'
           accept='image/*'
           onChange={uploadAvatar}
           disabled={uploading}
