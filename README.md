@@ -217,7 +217,7 @@ import { login, signup } from './actions'
 
 export default function LoginPage() {
   return (
-    <section className='flex justify-center items-center h-screen bg-white'>
+    <main className='flex justify-center items-center h-screen bg-white'>
       <Link
         href='/'
         className='absolute left-8 top-8 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 flex items-center group'
@@ -238,7 +238,7 @@ export default function LoginPage() {
         </svg>{' '}
         Back
       </Link>
-      <div className='flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
+      <section className='flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
         <div className='sm:mx-auto sm:w-full sm:max-w-sm'>
           <img
             alt='Your Company'
@@ -330,8 +330,8 @@ export default function LoginPage() {
             </a>
           </p> */}
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   )
 }
 ```
@@ -391,7 +391,7 @@ import Link from 'next/link'
 
 export default function ErrorPage() {
   return (
-    <section className='grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8 h-screen'>
+    <main className='grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8 h-screen'>
       <Link
         href='/login'
         className='absolute left-8 top-8 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 flex items-center group'
@@ -412,7 +412,7 @@ export default function ErrorPage() {
         </svg>{' '}
         Back
       </Link>
-      <div className='text-center'>
+      <section className='text-center'>
         {/* <p className="text-base font-semibold text-indigo-600">404</p>
           <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Page not found</h1> */}
         <p className='mt-6 text-base leading-7 text-gray-600'>
@@ -429,8 +429,8 @@ export default function ErrorPage() {
               Contact support <span aria-hidden="true">&rarr;</span>
             </a> */}
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   )
 }
 ```
@@ -477,6 +477,113 @@ export async function GET(request) {
   // return the user to an error page with some instructions
   redirectTo.pathname = '/error'
   return NextResponse.redirect(redirectTo)
+}
+```
+
+### Create an avatar upload widget
+
+```jsx
+// src/app/account/avatar.jsx
+'use client'
+
+import { createClient } from '@/utils/supabase/client'
+import { UserCircleIcon } from '@heroicons/react/24/solid'
+import Image from 'next/image'
+import { useEffect, useState } from 'react'
+
+export default function Avatar({ uid, url, size, onUpload }) {
+  const supabase = createClient()
+  const [avatarUrl, setAvatarUrl] = useState(url)
+  const [uploading, setUploading] = useState(false)
+
+  useEffect(() => {
+    async function downloadImage(path) {
+      try {
+        const { data, error } = await supabase.storage
+          .from('avatars')
+          .download(path)
+        if (error) {
+          throw error
+        }
+
+        const url = URL.createObjectURL(data)
+        setAvatarUrl(url)
+      } catch (error) {
+        console.log('Error downloading image: ', error)
+      }
+    }
+
+    if (url) downloadImage(url)
+  }, [url, supabase])
+
+  const uploadAvatar = async (event) => {
+    try {
+      setUploading(true)
+
+      if (!event.target.files || event.target.files.length === 0) {
+        throw new Error('You must select an image to upload.')
+      }
+
+      const file = event.target.files[0]
+      const fileExt = file.name.split('.').pop()
+      const filePath = `${uid}-${Math.random()}.${fileExt}`
+
+      const { error: uploadError } = await supabase.storage
+        .from('avatars')
+        .upload(filePath, file)
+
+      if (uploadError) {
+        throw uploadError
+      }
+
+      onUpload(filePath)
+    } catch (error) {
+      alert('Error uploading avatar!')
+    } finally {
+      setUploading(false)
+    }
+  }
+
+  return (
+    <div className='mt-2 flex items-center gap-x-3'>
+      {avatarUrl ? (
+        <Image
+          width={size}
+          height={size}
+          src={avatarUrl}
+          alt='Avatar'
+          className='avatar image border'
+          style={{ height: size, width: size }}
+        />
+      ) : (
+        <UserCircleIcon
+          aria-hidden='true'
+          className='h-12 w-12 text-gray-300'
+        />
+      )}
+      <div style={{ width: size }}>
+        <button
+          type='button'
+          className='rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'
+          onClick={() => document.getElementById('avatar').click()}
+          disabled={uploading}
+        >
+          {uploading ? 'Uploading ...' : 'Change'}
+        </button>
+        <input
+          style={{
+            visibility: 'hidden',
+            position: 'absolute',
+          }}
+          type='file'
+          id='avatar'
+          accept='image/*'
+          onChange={uploadAvatar}
+          disabled={uploading}
+        />
+      </div>
+    </div>
+  )
 }
 ```
 
@@ -754,139 +861,6 @@ export async function POST(req) {
     status: 302,
   })
 }
-```
-
-### Create an upload widget
-
-```jsx
-// src/app/account/avatar.jsx
-'use client'
-
-import { createClient } from '@/utils/supabase/client'
-import { UserCircleIcon } from '@heroicons/react/24/solid'
-import Image from 'next/image'
-import { useEffect, useState } from 'react'
-
-export default function Avatar({ uid, url, size, onUpload }) {
-  const supabase = createClient()
-  const [avatarUrl, setAvatarUrl] = useState(url)
-  const [uploading, setUploading] = useState(false)
-
-  useEffect(() => {
-    async function downloadImage(path) {
-      try {
-        const { data, error } = await supabase.storage
-          .from('avatars')
-          .download(path)
-        if (error) {
-          throw error
-        }
-
-        const url = URL.createObjectURL(data)
-        setAvatarUrl(url)
-      } catch (error) {
-        console.log('Error downloading image: ', error)
-      }
-    }
-
-    if (url) downloadImage(url)
-  }, [url, supabase])
-
-  const uploadAvatar = async (event) => {
-    try {
-      setUploading(true)
-
-      if (!event.target.files || event.target.files.length === 0) {
-        throw new Error('You must select an image to upload.')
-      }
-
-      const file = event.target.files[0]
-      const fileExt = file.name.split('.').pop()
-      const filePath = `${uid}-${Math.random()}.${fileExt}`
-
-      const { error: uploadError } = await supabase.storage
-        .from('avatars')
-        .upload(filePath, file)
-
-      if (uploadError) {
-        throw uploadError
-      }
-
-      onUpload(filePath)
-    } catch (error) {
-      alert('Error uploading avatar!')
-    } finally {
-      setUploading(false)
-    }
-  }
-
-  return (
-    <div className='mt-2 flex items-center gap-x-3'>
-      {avatarUrl ? (
-        <Image
-          width={size}
-          height={size}
-          src={avatarUrl}
-          alt='Avatar'
-          className='avatar image border'
-          style={{ height: size, width: size }}
-        />
-      ) : (
-        <UserCircleIcon
-          aria-hidden='true'
-          className='h-12 w-12 text-gray-300'
-        />
-      )}
-      <div style={{ width: size }}>
-        <button
-          type='button'
-          className='rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'
-          onClick={() => document.getElementById('avatar').click()}
-          disabled={uploading}
-        >
-          {uploading ? 'Uploading ...' : 'Change'}
-        </button>
-        <input
-          style={{
-            visibility: 'hidden',
-            position: 'absolute',
-          }}
-          type='file'
-          id='avatar'
-          accept='image/*'
-          onChange={uploadAvatar}
-          disabled={uploading}
-        />
-      </div>
-    </div>
-  )
-}
-```
-
-### Add the new widget
-
-```jsx
-// src/app/account/account-form.jsx
-// Import the new component
-import Avatar from './avatar'
-
-// ...
-
-return (
-  <div className='form-widget'>
-    {/* Add to the body */}
-    <Avatar
-      uid={user?.id}
-      url={avatar_url}
-      size={150}
-      onUpload={(url) => {
-        setAvatarUrl(url)
-        updateProfile({ fullname, username, website, avatar_url: url })
-      }}
-    />
-    {/* ... */}
-  </div>
-)
 ```
 
 ### Run the application

@@ -3,7 +3,7 @@ import { login, signup } from './actions'
 
 export default function LoginPage() {
   return (
-    <section className='flex justify-center items-center h-screen bg-white'>
+    <main className='flex justify-center items-center h-screen bg-white'>
       <Link
         href='/'
         className='absolute left-8 top-8 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 flex items-center group'
@@ -24,7 +24,7 @@ export default function LoginPage() {
         </svg>{' '}
         Back
       </Link>
-      <div className='flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
+      <section className='flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
         <div className='sm:mx-auto sm:w-full sm:max-w-sm'>
           <img
             alt='Your Company'
@@ -116,7 +116,7 @@ export default function LoginPage() {
             </a>
           </p> */}
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   )
 }
