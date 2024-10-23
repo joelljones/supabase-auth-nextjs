@@ -28,7 +28,7 @@ export default function ResetPasswordPage() {
 				<div className="sm:mx-auto sm:w-full sm:max-w-sm">
 					<Image
 						alt="Your Company"
-						src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+						src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
 						className="mx-auto h-10 w-auto"
 						width={40}
 						height={40}
