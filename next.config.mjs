@@ -5,8 +5,9 @@ const nextConfig = {
 			{
 				protocol: 'https',
 				hostname: 'tailwindui.com',
-				port: '',
-				pathname: '',
+				// port: '',
+				// pathname: '',
+				// search: '',
 			},
 		],
 	},
