@@ -1,15 +1,8 @@
 # Supabase Auth - Next.js Starter
 
-<p>
-  <a href="https://supabase.com">
-    <img
-      width="168"
-      height="30"
-      src="https://supabase.com/badge-made-with-supabase-dark.svg"
-      alt="Made with Supabase"
-    />
-  </a>
-</p>
+[![Netlify Status](https://api.netlify.com/api/v1/badges/48b6f284-4f0b-4831-96f2-afae417302df/deploy-status)](https://app.netlify.com/sites/supabase-auth-nextjs/deploys)
+
+[![Made with Supabase](https://supabase.com/badge-made-with-supabase-dark.svg)](https://supabase.com)
 
 > [!NOTE]
 > This is a **modified version** of [Supabase Next.js Auth & User Management Starter](https://github.com/supabase/supabase/blob/master/examples/user-management/nextjs-user-management) by [Supabase](https://supabase.com).
