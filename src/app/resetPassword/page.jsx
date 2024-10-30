@@ -6,7 +6,7 @@ export default function ResetPasswordPage() {
 		<main className="flex justify-center items-center h-screen bg-white">
 			<Link
 				href="/forgotPassword"
-				className="absolute left-8 top-8 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 flex items-center group"
+				className="absolute left-8 top-8 rounded-md bg-emerald-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500 flex items-center group"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +28,7 @@ export default function ResetPasswordPage() {
 				<div className="sm:mx-auto sm:w-full sm:max-w-sm">
 					<Image
 						alt="Your Company"
-						src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
+						src="https://tailwindui.com/plus/img/logos/mark.svg?color=emerald&shade=500"
 						className="mx-auto h-10 w-auto"
 						width={40}
 						height={40}
@@ -42,7 +42,7 @@ export default function ResetPasswordPage() {
 				<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm flex items-center justify-center">
 					<a
 						href="/account"
-						className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+						className="rounded-md bg-emerald-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
 					>
 						Proceed to account
 					</a>

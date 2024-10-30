@@ -234,7 +234,7 @@ export default function LoginPage() {
     <main className="flex justify-center items-center h-screen bg-white">
       <Link
         href="/"
-        className="absolute left-8 top-8 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 flex items-center group"
+        className="absolute left-8 top-8 rounded-md bg-emerald-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500 flex items-center group"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -256,7 +256,7 @@ export default function LoginPage() {
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <Image
             alt="Your Company"
-            src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
+            src="https://tailwindui.com/plus/img/logos/mark.svg?color=emerald&shade=500"
             className="mx-auto h-10 w-auto"
             width={40}
             height={40}
@@ -283,7 +283,7 @@ export default function LoginPage() {
                   type="email"
                   required
                   autoComplete="email"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-500 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -299,7 +299,7 @@ export default function LoginPage() {
                 {/* <div className='text-sm'>
                   <a
                     href='#'
-                    className='font-semibold text-indigo-600 hover:text-indigo-500'
+                    className='font-semibold text-emerald-500 hover:text-emerald-400'
                   >
                     Forgot password?
                   </a>
@@ -312,7 +312,7 @@ export default function LoginPage() {
                   type="password"
                   required
                   autoComplete="current-password"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-500 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -321,7 +321,7 @@ export default function LoginPage() {
               <button
                 formAction={login}
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-emerald-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
               >
                 Sign in
               </button>
@@ -341,7 +341,7 @@ export default function LoginPage() {
             Don't have an account yet?{' '}
             <a
               // href='/'
-              className='font-semibold leading-6 text-indigo-600 hover:text-indigo-500 cursor-pointer'
+              className='font-semibold leading-6 text-emerald-500 hover:text-emerald-400 cursor-pointer'
             >
               Start here
             </a>
@@ -412,7 +412,7 @@ export default function ErrorPage() {
     <main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8 h-screen">
       <Link
         href="/login"
-        className="absolute left-8 top-8 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 flex items-center group"
+        className="absolute left-8 top-8 rounded-md bg-emerald-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500 flex items-center group"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -431,7 +431,7 @@ export default function ErrorPage() {
         Back
       </Link>
       <section className="text-center">
-        {/* <p className="text-base font-semibold text-indigo-600">404</p>
+        {/* <p className="text-base font-semibold text-emerald-500">404</p>
           <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Page not found</h1> */}
         <p className="mt-6 text-base leading-7 text-gray-600">
           Sorry, something went wrong.
@@ -439,7 +439,7 @@ export default function ErrorPage() {
         <div className="mt-10 flex items-center justify-center gap-x-6">
           <a
             href="/"
-            className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="rounded-md bg-emerald-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
           >
             Go back home
           </a>
@@ -462,7 +462,7 @@ export default function ConfirmationPage() {
     <main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8 h-screen">
       <Link
         href="/login"
-        className="absolute left-8 top-8 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 flex items-center group"
+        className="absolute left-8 top-8 rounded-md bg-emerald-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500 flex items-center group"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -481,7 +481,7 @@ export default function ConfirmationPage() {
         Back
       </Link>
       <section className="text-center">
-        {/* <p className="text-base font-semibold text-indigo-600">404</p>
+        {/* <p className="text-base font-semibold text-emerald-500">404</p>
           <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Page not found</h1> */}
         <p className="mt-6 text-base leading-7 text-gray-600">
           A confirmation email has been sent to your email address.
@@ -489,7 +489,7 @@ export default function ConfirmationPage() {
         <div className="mt-10 flex items-center justify-center gap-x-6">
           <a
             href="/"
-            className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="rounded-md bg-emerald-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
           >
             Go back home
           </a>
@@ -792,7 +792,7 @@ export default function AccountForm({ user }) {
                     value={user?.email}
                     disabled
                     autoComplete="email"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-500 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -812,7 +812,7 @@ export default function AccountForm({ user }) {
                     type="text"
                     value={fullname || ''}
                     onChange={(e) => setFullname(e.target.value)}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-500 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -826,7 +826,7 @@ export default function AccountForm({ user }) {
                   Username
                 </label>
                 <div className="mt-2">
-                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-emerald-500">
                     <input
                       id="username"
                       name="username"
@@ -855,7 +855,7 @@ export default function AccountForm({ user }) {
                     type="url"
                     value={website || ''}
                     onChange={(e) => setWebsite(e.target.value)}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-500 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -873,7 +873,7 @@ export default function AccountForm({ user }) {
           </button>
           <button
             type="submit"
-            className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="rounded-md bg-emerald-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
             onClick={() =>
               updateProfile({ fullname, username, website, avatar_url })
             }

@@ -7,7 +7,7 @@ export default function ForgotPasswordPage() {
 		<main className="flex justify-center items-center h-screen bg-white">
 			<Link
 				href="/login"
-				className="absolute left-8 top-8 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 flex items-center group"
+				className="absolute left-8 top-8 rounded-md bg-emerald-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500 flex items-center group"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +29,7 @@ export default function ForgotPasswordPage() {
 				<div className="sm:mx-auto sm:w-full sm:max-w-sm">
 					<Image
 						alt="Your Company"
-						src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
+						src="https://tailwindui.com/plus/img/logos/mark.svg?color=emerald&shade=500"
 						className="mx-auto h-10 w-auto"
 						width={40}
 						height={40}
@@ -56,7 +56,7 @@ export default function ForgotPasswordPage() {
 									type="email"
 									required
 									autoComplete="email"
-									className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+									className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-500 sm:text-sm sm:leading-6"
 								/>
 							</div>
 						</div>
@@ -65,7 +65,7 @@ export default function ForgotPasswordPage() {
 							<button
 								formAction={forgotPassword}
 								type="submit"
-								className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+								className="flex w-full justify-center rounded-md bg-emerald-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
 							>
 								Reset password
 							</button>
