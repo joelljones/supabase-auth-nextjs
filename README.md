@@ -20,6 +20,50 @@ The app authenticates and identifies the user, and stores their profile informat
 - Backend:
   - [Supabase dashboard](https://supabase.com/dashboard) - hosted Postgres database with restful API for usage with Supabase.
 
+## 🏡 Project Structure
+
+```
+├── src/
+│   ├── app/
+│   │   ├── account/
+│   │   │   ├── account-form.jsx
+│   │   │   ├── avatar.jsx
+│   │   │   └── page.jsx
+│   │   ├── auth/
+│   │   │   ├── confirm/
+│   │   │   │   └── route.js
+│   │   │   └── signout/
+│   │   │       └── route.js
+│   │   ├── components/
+│   │   │   ├── nextLogo.jsx
+│   │   │   └── supabaseLogo.jsx
+│   │   ├── confirmation/
+│   │   │   └── page.jsx
+│   │   ├── error/
+│   │   │   └── page.jsx
+│   │   ├── forgotPassword/
+│   │   │   ├── actions.js
+│   │   │   └── page.jsx
+│   │   ├── login/
+│   │   │   ├── actions.js
+│   │   │   └── page.jsx
+│   │   ├── resetPassword/
+│   │   │   └── page.jsx
+│   │   ├── layout.js
+│   │   └── page.js
+│   └── uitls/
+│       └── supabase/
+│           ├── client.js
+│           ├── getURL.js
+│           ├── middleware.js
+│           └── server.js
+├── .env.local
+├── .prettierrc
+├── middleware.js
+├── next.config.mjs
+└── tailwind.config.js
+```
+
 ## 🧞‍♂️ Commands
 
 All commands are run from the root of the project, from a terminal:
