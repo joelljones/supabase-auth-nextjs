@@ -1,6 +1,6 @@
 'use server'
 
-// import { getURL } from '@/utils/supabase/getURL'
+import { getURL } from '@/utils/supabase/getURL'
 import { createClient } from '@/utils/supabase/server'
 // import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
@@ -14,17 +14,8 @@ export async function forgotPassword(formData) {
 	const email = formData.get('email')
 
 	const { error } = await supabase.auth.resetPasswordForEmail(email, {
-		redirectTo: '/resetPassword',
+		redirectTo: `${getURL()}auth/reset?next=/resetPassword`,
 	})
-	// const { error } = await supabase.auth.resetPasswordForEmail(email)
-
-	// REDIRECT URL FOR LOCAL DEVELOPMENT
-	// console.log('Redirecting to:', getURL())
-	// const { error } = await supabase.auth.resetPasswordForEmail(email, {
-	// 	options: {
-	// 		redirectTo: getURL(),
-	// 	},
-	// })
 
 	if (error) {
 		console.log('Forgot password error:', error) // Log the error to the console
