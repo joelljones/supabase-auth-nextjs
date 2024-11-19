@@ -42,7 +42,10 @@ export default function Home() {
 					>
 						Get started
 					</a>
-					<a href="#" className="text-sm font-semibold leading-6 ">
+					<a
+						href="https://github.com/joelljones/supabase-auth-nextjs"
+						className="text-sm font-semibold leading-6 "
+					>
 						Learn more <span aria-hidden="true">→</span>
 					</a>
 				</div>
