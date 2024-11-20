@@ -70,12 +70,12 @@ export default function LoginPage() {
 									Password
 								</label>
 								<div className="text-sm">
-									<a
-										href="/forgotPassword"
+									<Link
+										href="/forgot-password"
 										className="font-semibold text-emerald-500 hover:text-emerald-400"
 									>
 										Forgot password?
-									</a>
+									</Link>
 								</div>
 							</div>
 							<div className="mt-2">

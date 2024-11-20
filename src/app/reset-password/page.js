@@ -5,7 +5,7 @@ import { resetPassword } from './actions'
 export default function ResetPasswordPage() {
 	return (
 		<main className="flex justify-center items-center h-screen bg-white">
-			<Link href="/forgotPassword" className="absolute left-8 top-8 ...">
+			<Link href="/forgot-password" className="absolute left-8 top-8 ...">
 				{/* Back button SVG */}
 			</Link>
 			<section className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">

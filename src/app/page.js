@@ -1,5 +1,5 @@
-import NextLogo from './components/nextLogo'
-import SupabaseLogo from './components/supabaseLogo'
+import NextLogo from './components/NextLogo'
+import SupabaseLogo from './components/SupabaseLogo'
 
 export default function Home() {
 	return (

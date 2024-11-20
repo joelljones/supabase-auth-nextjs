@@ -26,7 +26,7 @@ The app authenticates and identifies the user, and stores their profile informat
 ├── src/
 │   ├── app/
 │   │   ├── account/
-│   │   │   ├── account-form.jsx
+│   │   │   ├── AccountForm.jsx
 │   │   │   ├── avatar.jsx
 │   │   │   └── page.jsx
 │   │   ├── auth/
@@ -35,19 +35,19 @@ The app authenticates and identifies the user, and stores their profile informat
 │   │   │   └── signout/
 │   │   │       └── route.js
 │   │   ├── components/
-│   │   │   ├── nextLogo.jsx
-│   │   │   └── supabaseLogo.jsx
+│   │   │   ├── NextLogo.jsx
+│   │   │   └── SupabaseLogo.jsx
 │   │   ├── confirmation/
 │   │   │   └── page.jsx
 │   │   ├── error/
 │   │   │   └── page.jsx
-│   │   ├── forgotPassword/
+│   │   ├── forgot-password/
 │   │   │   ├── actions.js
 │   │   │   └── page.jsx
 │   │   ├── login/
 │   │   │   ├── actions.js
 │   │   │   └── page.jsx
-│   │   ├── resetPassword/
+│   │   ├── reset-password/
 │   │   │   └── page.jsx
 │   │   ├── layout.js
 │   │   └── page.js
@@ -595,7 +595,7 @@ export async function GET(request) {
 ### Create an avatar upload widget
 
 ```jsx
-// src/app/account/avatar.jsx
+// src/app/account/Avatar.jsx
 'use client'
 
 import { createClient } from '@/utils/supabase/client'
@@ -702,12 +702,12 @@ export default function Avatar({ uid, url, size, onUpload }) {
 ### Account page
 
 ```jsx
-// src/app/account/account-form.jsx
+// src/app/account/AccountForm.jsx
 'use client'
 
 import { createClient } from '@/utils/supabase/client'
 import { useCallback, useEffect, useState } from 'react'
-import Avatar from './avatar'
+import Avatar from './Avatar'
 
 export default function AccountForm({ user }) {
   const supabase = createClient()
@@ -935,7 +935,7 @@ export default function AccountForm({ user }) {
 ```jsx
 // src/app/account/page.jsx
 import { createClient } from '@/utils/supabase/server'
-import AccountForm from './account-form'
+import AccountForm from './AccountForm'
 
 export default async function Account() {
   const supabase = createClient()

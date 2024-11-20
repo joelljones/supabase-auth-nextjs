@@ -2,7 +2,7 @@
 
 import { createClient } from '@/utils/supabase/client'
 import { useCallback, useEffect, useState } from 'react'
-import Avatar from './avatar'
+import Avatar from './Avatar'
 
 export default function AccountForm({ user }) {
 	const supabase = createClient()
