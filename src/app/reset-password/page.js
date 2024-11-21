@@ -2,6 +2,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { resetPassword } from './actions'
 
+export const metadata = {
+	title: 'Reset Password - Supabase Auth - Next.js',
+	description: 'Reset password',
+}
+
 export default function ResetPasswordPage() {
 	return (
 		<main className="flex justify-center items-center h-screen bg-white">

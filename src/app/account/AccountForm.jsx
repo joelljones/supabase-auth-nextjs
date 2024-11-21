@@ -1,7 +1,7 @@
 'use client'
 
 import { createClient } from '@/utils/supabase/client'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Avatar from './Avatar'
 
 export default function AccountForm({ user }) {
@@ -11,10 +11,22 @@ export default function AccountForm({ user }) {
 	const [username, setUsername] = useState(null)
 	const [website, setWebsite] = useState(null)
 	const [avatar_url, setAvatarUrl] = useState(null)
+	const alertShown = useRef(false)
 
 	const getProfile = useCallback(async () => {
 		try {
 			setLoading(true)
+
+			// Add a check for user existence before making the request
+			if (!user && process.env.NODE_ENV === 'development') {
+				if (!alertShown.current) {
+					// In production, we'll redirect (handled in page.js)
+					// In development, we'll show an alert
+					alert('No user found - please log in')
+					alertShown.current = true
+				}
+				return // Exit early
+			}
 
 			const { data, error, status } = await supabase
 				.from('profiles')

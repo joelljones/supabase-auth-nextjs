@@ -2,6 +2,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { forgotPassword } from './actions'
 
+export const metadata = {
+	title: 'Forgot Password - Supabase Auth - Next.js',
+	description: 'Forgot password',
+}
+
 export default function ForgotPasswordPage() {
 	return (
 		<main className="flex justify-center items-center h-screen bg-white">

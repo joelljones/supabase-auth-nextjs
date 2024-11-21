@@ -1,5 +1,10 @@
 import Link from 'next/link'
 
+export const metadata = {
+	title: 'Error - Supabase Auth - Next.js',
+	description: 'Something went wrong',
+}
+
 export default function ErrorPage() {
 	return (
 		<main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8 h-screen">
