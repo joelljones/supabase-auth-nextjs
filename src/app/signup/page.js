@@ -1,17 +1,17 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { login } from './actions'
+import { signup } from './actions'
 
 export const metadata = {
-	title: 'Login - Supabase Auth - Next.js',
-	description: 'Log in to your account',
+	title: 'Signup - Supabase Auth - Next.js',
+	description: 'Sign up for an account',
 }
 
-export default function LoginPage() {
+export default function SignUpPage() {
 	return (
 		<main className="flex justify-center items-center h-screen bg-white">
 			<Link
-				href="/"
+				href="/login"
 				className="absolute left-8 top-8 rounded-md bg-emerald-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500 flex items-center group"
 			>
 				<svg
@@ -42,7 +42,7 @@ export default function LoginPage() {
 						unoptimized
 					/>
 					<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-						Log in to your account
+						Sign up for an account
 					</h2>
 				</div>
 
@@ -75,14 +75,6 @@ export default function LoginPage() {
 								>
 									Password
 								</label>
-								<div className="text-sm">
-									<Link
-										href="/forgot-password"
-										className="font-semibold text-emerald-500 hover:text-emerald-400"
-									>
-										Forgot password?
-									</Link>
-								</div>
 							</div>
 							<div className="mt-2">
 								<input
@@ -98,24 +90,14 @@ export default function LoginPage() {
 
 						<div>
 							<button
-								formAction={login}
+								formAction={signup}
 								type="submit"
 								className="flex w-full justify-center rounded-md bg-emerald-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
 							>
-								Log in
+								Sign up
 							</button>
 						</div>
 					</form>
-
-					<p className="mt-10 text-center text-sm text-gray-500">
-						Don&apos;t have an account yet?{' '}
-						<a
-							href="/signup"
-							className="font-semibold leading-6 text-emerald-500 hover:text-emerald-500 cursor-pointer"
-						>
-							Start here
-						</a>
-					</p>
 				</div>
 			</section>
 		</main>
