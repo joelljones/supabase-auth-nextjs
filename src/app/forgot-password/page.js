@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function ForgotPasswordPage() {
 	return (
-		<main className="flex justify-center items-center h-screen bg-white">
+		<main className="flex justify-center items-center h-screen">
 			<Link
 				href="/login"
 				className="absolute left-8 top-8 rounded-md bg-emerald-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500 flex items-center group"
@@ -40,7 +40,7 @@ export default function ForgotPasswordPage() {
 						height={40}
 						unoptimized
 					/>
-					<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+					<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight">
 						Forgot password?
 					</h2>
 				</div>
@@ -50,7 +50,7 @@ export default function ForgotPasswordPage() {
 						<div>
 							<label
 								htmlFor="email"
-								className="block text-sm font-medium leading-6 text-gray-900"
+								className="block text-sm font-medium leading-6"
 							>
 								Email address
 							</label>
@@ -61,7 +61,7 @@ export default function ForgotPasswordPage() {
 									type="email"
 									required
 									autoComplete="email"
-									className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-500 sm:text-sm sm:leading-6"
+									className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-600 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-500 sm:text-sm sm:leading-6 bg-inherit"
 								/>
 							</div>
 						</div>

@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function LoginPage() {
 	return (
-		<main className="flex justify-center items-center h-screen bg-white">
+		<main className="flex justify-center items-center h-screen">
 			<Link
 				href="/"
 				className="absolute left-8 top-8 rounded-md bg-emerald-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500 flex items-center group"
@@ -41,7 +41,7 @@ export default function LoginPage() {
 						height={40}
 						unoptimized
 					/>
-					<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+					<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight">
 						Log in to your account
 					</h2>
 				</div>
@@ -51,7 +51,7 @@ export default function LoginPage() {
 						<div>
 							<label
 								htmlFor="email"
-								className="block text-sm font-medium leading-6 text-gray-900"
+								className="block text-sm font-medium leading-6"
 							>
 								Email address
 							</label>
@@ -62,7 +62,7 @@ export default function LoginPage() {
 									type="email"
 									required
 									autoComplete="email"
-									className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-500 sm:text-sm sm:leading-6"
+									className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-600 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-500 sm:text-sm sm:leading-6 bg-inherit"
 								/>
 							</div>
 						</div>
@@ -71,7 +71,7 @@ export default function LoginPage() {
 							<div className="flex items-center justify-between">
 								<label
 									htmlFor="password"
-									className="block text-sm font-medium leading-6 text-gray-900"
+									className="block text-sm font-medium leading-6"
 								>
 									Password
 								</label>
@@ -91,7 +91,7 @@ export default function LoginPage() {
 									type="password"
 									required
 									autoComplete="current-password"
-									className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-500 sm:text-sm sm:leading-6"
+									className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-600 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-500 sm:text-sm sm:leading-6 bg-inherit"
 								/>
 							</div>
 						</div>

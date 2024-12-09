@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function ErrorPage() {
 	return (
-		<main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8 h-screen">
+		<main className="grid min-h-full place-items-center px-6 py-24 sm:py-32 lg:px-8 h-screen">
 			<Link
 				href="/login"
 				className="absolute left-8 top-8 rounded-md bg-emerald-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500 flex items-center group"
@@ -29,9 +29,7 @@ export default function ErrorPage() {
 				Back
 			</Link>
 			<section className="text-center">
-				<p className="mt-6 text-base leading-7 text-gray-600">
-					Sorry, something went wrong.
-				</p>
+				<p className="mt-6 text-base leading-7">Sorry, something went wrong.</p>
 				<div className="mt-10 flex items-center justify-center gap-x-6">
 					<Link
 						href="/"

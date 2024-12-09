@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function ResetPasswordPage() {
 	return (
-		<main className="flex justify-center items-center h-screen bg-white">
+		<main className="flex justify-center items-center h-screen">
 			<Link href="/forgot-password" className="absolute left-8 top-8 ...">
 				{/* Back button SVG */}
 			</Link>
@@ -23,7 +23,7 @@ export default function ResetPasswordPage() {
 						height={40}
 						unoptimized
 					/>
-					<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+					<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight">
 						Reset password
 					</h2>
 				</div>
@@ -33,7 +33,7 @@ export default function ResetPasswordPage() {
 						<div>
 							<label
 								htmlFor="password"
-								className="block text-sm font-medium leading-6 text-gray-900"
+								className="block text-sm font-medium leading-6"
 							>
 								New Password
 							</label>
@@ -43,7 +43,7 @@ export default function ResetPasswordPage() {
 									name="password"
 									type="password"
 									required
-									className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-500 sm:text-sm sm:leading-6"
+									className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-600 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-500 sm:text-sm sm:leading-6 bg-inherit"
 								/>
 							</div>
 						</div>
