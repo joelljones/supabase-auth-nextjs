@@ -2,7 +2,7 @@
 
 import { getURL } from '@/utils/supabase/getURL'
 import { createClient } from '@/utils/supabase/server'
-// import { revalidatePath } from 'next/cache'
+import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
 export async function signup(formData) {
@@ -24,6 +24,6 @@ export async function signup(formData) {
 		redirect('/error')
 	}
 
-	// revalidatePath('/', 'layout')
+	revalidatePath('/', 'layout')
 	redirect('/confirmation')
 }

@@ -109,12 +109,12 @@ export default function LoginPage() {
 
 					<p className="mt-10 text-center text-sm text-gray-500">
 						Don&apos;t have an account yet?{' '}
-						<a
+						<Link
 							href="/signup"
 							className="font-semibold leading-6 text-emerald-500 hover:text-emerald-500 cursor-pointer"
 						>
 							Start here
-						</a>
+						</Link>
 					</p>
 				</div>
 			</section>

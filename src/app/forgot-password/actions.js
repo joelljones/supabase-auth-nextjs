@@ -2,10 +2,9 @@
 
 import { getURL } from '@/utils/supabase/getURL'
 import { createClient } from '@/utils/supabase/server'
-// import { revalidatePath } from 'next/cache'
+import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
-// FORGOT PASSWORD
 export async function forgotPassword(formData) {
 	const supabase = createClient()
 
@@ -18,11 +17,10 @@ export async function forgotPassword(formData) {
 	})
 
 	if (error) {
-		console.log('Forgot password error:', error) // Log the error to the console
+		console.log('Forgot password error:', error)
 		redirect('/error')
 	}
 
-	// revalidatePath('/', 'layout')
-	// redirect('/account')
+	revalidatePath('/', 'layout')
 	redirect('/confirmation')
 }

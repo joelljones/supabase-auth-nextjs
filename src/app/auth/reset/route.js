@@ -1,11 +1,12 @@
 import { createClient } from '@/utils/supabase/server'
 import { NextResponse } from 'next/server'
 
+// Creating a handler to a GET request to route /auth/reset
 export async function GET(request) {
 	const { searchParams } = new URL(request.url)
 	const token_hash = searchParams.get('token_hash')
 	const type = searchParams.get('type')
-	const next = '/reset-password'
+	const next = '/login'
 
 	// Create redirect link without the secret token
 	const redirectTo = request.nextUrl.clone()
@@ -15,11 +16,11 @@ export async function GET(request) {
 
 	if (token_hash && type) {
 		const supabase = createClient()
+
 		const { error } = await supabase.auth.verifyOtp({
 			type,
 			token_hash,
 		})
-
 		if (!error) {
 			redirectTo.searchParams.delete('next')
 			return NextResponse.redirect(redirectTo)
